@@ -1,0 +1,9 @@
+module AdivinhaNumeroApp {
+
+        interface AdivinhaNumero {
+            long identifica();
+            long retornaresultado();
+	    long inicio();
+            long verifica(in long id, in long tentativa);
+        };
+};
