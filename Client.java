@@ -48,35 +48,30 @@ public class Client {
         animpl = AdivinhaNumeroHelper.narrow(ncRef.resolve_str(name));
 
 
-        int myid = animpl.identifica(); //passa meu ID
-        int resultado = animpl.retornaresultado(); //passa o numero para acertar
+        int myid = animpl.identifica(); //identifica o cliente
+        int resultado = animpl.retornaresultado(); //devuelve el resultado del juego
 
-	    System.out.println(resultado); // HACK
+	    System.out.println(resultado); //imprime el resultado
 
-        int tentativa = 0; // conta as tentativas
-        int x = animpl.inicio(); // inidica q inicia o jogo
-        int conferir = 0; // pega o retorno do quando verifica
+        int tentativa = 0; //numero de intentos
+        int x = animpl.inicio(); //indica si el juego ha comenzado
+        int conferir = 0; //numero a adivinar
 
         while (x == 0){ 
-            int valor = in.nextInt(); // le o valor do chute
-            tentativa ++; // conta a tentativa
+            int valor = in.nextInt(); //valor introducido por el usuario
+            tentativa ++; //incrementa el numero de intentos
 
 
-            conferir = animpl.verifica(myid, valor); // verifica se tu acertou primeiro
+            conferir = animpl.verifica(myid, valor); //verifica si el numero introducido es correcto
 
             if(conferir == 0){
-                System.out.println("Vc ganhou!");
+                System.out.println("HAS GANADO");
                 x = 1;
             }else{
-                System.out.println("Errou :<");
+                System.out.println("ERROR :<");
             }      
         }
     
-        
-
-
-
-
     }catch (Exception e){
         System.err.println("Erro: " + e );
     }
