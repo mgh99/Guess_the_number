@@ -1,6 +1,6 @@
 module AdivinhaNumeroApp {
 
-        interface AdivinhaNumero {
+        interface AdivinhaNumero { 
             long identifica();
             long retornaresultado();
 	    long inicio();
