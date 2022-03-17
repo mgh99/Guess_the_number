@@ -48,10 +48,10 @@ public class Client {
         animpl = AdivinhaNumeroHelper.narrow(ncRef.resolve_str(name));
 
 
-        int myid = animpl.identifica(); //identifica o cliente
+        int myid = animpl.identifica(); // identifica el cliente
         int resultado = animpl.retornaresultado(); //devuelve el resultado del juego
 
-	    System.out.println(resultado); //imprime el resultado
+	    /*System.out.println(resultado); //imprime el resultado
 
         int tentativa = 0; //numero de intentos
         int x = animpl.inicio(); //indica si el juego ha comenzado
@@ -70,6 +70,54 @@ public class Client {
             }else{
                 System.out.println("ERROR :<");
             }      
+        }*/
+
+        int numAleatorio = (int) ((Math.random() * 100) + 1); //numero aleatorio del 1 al 100
+        int numUser; //numero introducido por el usuario
+        int contador; //contador de intentos
+
+        System.out.println("Adivina el numero del 1 al 100");
+        System.out.print("Tienes 5 intentos, dime un numero entre el 1 y el 100: ");
+        numUser = in.nextInt();
+
+        for( contador = 0; contador <= 4; contador++) {
+
+            numAleatorio = animpl.verifica(myid, numUser); //verifica si el numero introducido es correcto
+
+            //Primero comprobamos si ha acertado
+            if(numAleatorio == numUser) {
+                System.out.println("Otra oportunidad!!, ESPERA NOOO, HAS GANADOOO!!!");
+                System.out.println("Has acertado el numero es: " + numAleatorio);
+                break;
+            }
+
+            //Si no ha acertado comprobamos si es mayor o menor
+            if(numAleatorio > numUser) {
+                System.out.println("El numero es mayor que " + numUser);
+            } else if(numAleatorio < numUser) {
+                System.out.println("El numero es menor que " + numUser);
+            }
+
+            //Si ha gastado todos los intentos
+            if(contador == 4) {
+                System.out.println("Has perdido, el numero era: " + numAleatorio);
+            }
+
+            //Cuando solo le queda un intento dar una pista
+            if(contador <= 1) {
+                System.out.println("Te quedan " + (4 - contador) + " intento");
+                System.out.print("Otra opurtunidad!: ");
+                numUser = in.nextInt();
+            } else if(contador == 2){
+                int x = numAleatorio / 10;
+                System.out.println("Una pista, la primera cifra es " + x);
+                System.out.print("Otra opurtunidad!: ");
+                numUser = in.nextInt();
+            } else if(contador >= 3) {
+                System.out.println("Otra opurtunidad!");
+                System.out.print("Oh, oh..., ULTIMA OPURTUNIDAD!: ");
+                numUser = in.nextInt();
+            }
         }
     
     }catch (Exception e){
