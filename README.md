@@ -28,7 +28,7 @@ java Client -ORBInitialHost localhost -ORBInitialPort 2000
 ```
 -----------------------------------------------------
 ## Visualización
-PONER UN GIF
+<div align = "center"><img src="https://github.com/mgh99/Guess_the_number/blob/master/img/adivina_numero.gif.gif" alt="App Screenshot" style="zoom: 70%" /></div>
 
 ----------------------------------------------------------
 ## Autor
