@@ -13,33 +13,33 @@ class AdivinhaNumeroImpl extends AdivinhaNumeroPOA {
     private ORB orb;
 
 
-    Random n = new Random();
+    Random n = new Random(); // generador de numeros aleatorios
     public int a = 0;
     public int contador = 0;
     public int vencedor = 0;
     public int result = 0;
 
-	public void setORB(ORB orb_val) {
+	public void setORB(ORB orb_val) { //se inicializa el ORB
 		orb = orb_val;
 	}
 
     
 
-    public int retornaresultado (){
+    public int retornaresultado (){ //devuelve el resultado del juego
         result = n.nextInt(6);
         return result;
     }
 
-    public int identifica(){
+    public int identifica(){ //devuelve el identificador del cliente
         contador++;
         return n.nextInt(1000);
     }
 
-    public int inicio(){
+    public int inicio(){ //devuelve si el juego ha comenzado
         return a;
     }
 
-    public int verifica(int id, int tentativa){
+    public int verifica(int id, int tentativa){ //verifica si el numero introducido es correcto
         if((tentativa == result )&&(a == 0)){
             a = 1;
             vencedor = id;
@@ -55,11 +55,11 @@ class AdivinhaNumeroImpl extends AdivinhaNumeroPOA {
 
 
 
-public class Server {
+public class Server { 
 
     public static void main(String args[]){
 
-    try{
+    try{ 
         ORB orb = ORB.init(args, null);
 
         POA rootpoa = POAHelper.narrow(orb.resolve_initial_references("RootPOA"));
